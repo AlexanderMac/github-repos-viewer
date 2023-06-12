@@ -1,0 +1,33 @@
+app-progress-spinner(*ngIf="isLoading")
+.repo-list(*ngIf="repos")
+  p-table(
+    '[value]'="repos"
+    selectionMode="single"
+    '[(selection)]'="selectedRepo"
+    '(onRowSelect)'="onRepoSelect($event)" 
+    dataKey="id"
+  )
+    ng-template(pTemplate="header")
+      tr
+        th(pSortableColumn="name")
+          span Name
+          p-sortIcon(field="name")
+        th(pSortableColumn="programmingLanguage")
+          span Language
+          p-sortIcon(field="programmingLanguage")
+        th(pSortableColumn="lastPushTime")
+          span Last Push Time
+          p-sortIcon(field="lastPushTime")
+        th(pSortableColumn="isArchive")
+          span Is Archive
+          p-sortIcon(field="isArchive")
+        th
+          span Link
+    ng-template(pTemplate="body" let-repo="")
+      tr('[pSelectableRow]'="repo")
+        td {{ repo.name }}
+        td {{ repo.programmingLanguage }}
+        td {{ repo.lastPushTime | date:'short' }}
+        td
+          i.pi.pi-file
+        td {{ repo.link }}
