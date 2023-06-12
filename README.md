@@ -8,7 +8,6 @@ A simple app to list Microsoft's repos on Github.
 ### Features
 - A list of Microsoft repos
 - Pagination
-- Filtration
 - Sorting
 - A dialog with a list of top last 5 issues of the repo
 
