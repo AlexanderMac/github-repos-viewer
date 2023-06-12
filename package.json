@@ -1,0 +1,71 @@
+{
+  "name": "github-repos-viewer",
+  "version": "0.0.1",
+  "description": "github-repos-viewer",
+  "private": true,
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=7"
+  },
+  "scripts": {
+    "ng": "ng",
+    "generate": "ng generate",
+    "build": "ng build --configuration development",
+    "build:prod": "ng build",
+    "start": "ng serve",
+    "lint": "ng lint --fix",
+    "prettify": "prettier --write \"src/**/*.ts\"",
+    "format": "pnpm lint --fix && pnpm prettify"
+  },
+  "dependencies": {
+    "@angular/animations": "^15.2.9",
+    "@angular/common": "^15.2.9",
+    "@angular/compiler": "^15.2.9",
+    "@angular/core": "^15.2.9",
+    "@angular/forms": "^15.2.9",
+    "@angular/platform-browser": "^15.2.9",
+    "@angular/platform-browser-dynamic": "^15.2.9",
+    "@angular/router": "15.2.9",
+    "bootstrap": "^5.2.3",
+    "crypto-random-string": "^5.0.0",
+    "lodash": "^4.17.21",
+    "o2diff": "^4.0.1",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.4.1",
+    "rxjs": "^6.6.7",
+    "tslib": "^2.5.2",
+    "zone.js": "~0.12.0"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^15.0.0",
+    "@angular-eslint/builder": "15.2.1",
+    "@angular-eslint/eslint-plugin": "15.2.1",
+    "@angular-eslint/eslint-plugin-template": "15.2.1",
+    "@angular-eslint/schematics": "15.2.1",
+    "@angular-eslint/template-parser": "15.2.1",
+    "@angular/cli": "~15.2.8",
+    "@angular/compiler-cli": "^15.2.9",
+    "@types/lodash": "^4.14.195",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
+    "@typescript-eslint/parser": "5.48.2",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.8",
+    "pug-html-loader": "^1.1.5",
+    "raw-loader": "^4.0.2",
+    "typescript": "~4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ViktorMakTorwend/github-repos-viewer"
+  },
+  "author": "Viktor Mak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ViktorMakTorwend/github-repos-viewer/issues"
+  },
+  "homepage": "https://github.com/ViktorMakTorwend/github-repos-viewer"
+}
