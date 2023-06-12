@@ -24,7 +24,10 @@
           p-sortIcon(field="archived")
         th Repo Url
     ng-template(pTemplate="body" let-repo="")
-      tr('[pSelectableRow]'="repo")
+      tr(
+        '[pSelectableRow]'="repo"
+        '(dblclick)'="onRepoDoubleClick($event)"
+      )
         td {{ repo.name }}
         td {{ repo.language }}
         td {{ repo.pushed_at | date: 'dd, MM, YYYY, HH:MM' }}
