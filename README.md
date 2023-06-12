@@ -3,6 +3,8 @@ A simple app to list Microsoft's repos on Github.
 
 [![Build Status](https://github.com/ViktorMakTorwend/github-repos-viewer/workflows/CI/badge.svg)](https://github.com/ViktorMakTorwend/github-repos-viewer/actions?query=workflow%3ACI)
 
+[demo.webm](https://github.com/AlexanderMac/github-repos-viewer/assets/1192919/b9b3969d-0953-4fba-acbf-0bb8f98cb261)
+
 ### Features
 - A list of Microsoft repos
 - Pagination
