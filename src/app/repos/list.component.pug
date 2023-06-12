@@ -1,33 +1,42 @@
-app-progress-spinner(*ngIf="isLoading")
-.repo-list(*ngIf="repos")
+.repo-list
   p-table(
     '[value]'="repos"
-    selectionMode="single"
-    '[(selection)]'="selectedRepo"
-    '(onRowSelect)'="onRepoSelect($event)" 
     dataKey="id"
+    selectionMode="single"
+    sortField="name"
+    '[loading]'="isLoading"
+    '[(selection)]'="selectedRepo"
+    '(onRowSelect)'="onRepoSelect($event)"
   )
     ng-template(pTemplate="header")
       tr
         th(pSortableColumn="name")
           span Name
           p-sortIcon(field="name")
-        th(pSortableColumn="programmingLanguage")
+        th(pSortableColumn="language")
           span Language
-          p-sortIcon(field="programmingLanguage")
-        th(pSortableColumn="lastPushTime")
-          span Last Push Time
-          p-sortIcon(field="lastPushTime")
-        th(pSortableColumn="isArchive")
-          span Is Archive
-          p-sortIcon(field="isArchive")
-        th
-          span Link
+          p-sortIcon(field="language")
+        th(pSortableColumn="pushed_at")
+          span Last Push
+          p-sortIcon(field="pushed_at")
+        th(pSortableColumn="archived")
+          span Archived?
+          p-sortIcon(field="archived")
+        th Repo Url
     ng-template(pTemplate="body" let-repo="")
       tr('[pSelectableRow]'="repo")
         td {{ repo.name }}
-        td {{ repo.programmingLanguage }}
-        td {{ repo.lastPushTime | date:'short' }}
+        td {{ repo.language }}
+        td {{ repo.pushed_at | date: 'dd, MM, YYYY, HH:MM' }}
         td
-          i.pi.pi-file
-        td {{ repo.link }}
+          i.pi.pi-check(*ngIf="repo.archived")
+        td
+          a(href="{{ repo.html_url }}" target="_blank") Repo Url
+
+  p-paginator(
+    '[rows]'="rowsPerPage"
+    '[totalRecords]'="repoTotalCount"
+    '[rowsPerPageOptions]'="[10, 50, 100]"
+    '[showCurrentPageReport]'="true"
+    '(onPageChange)'="onPageChange($event)"
+  )
