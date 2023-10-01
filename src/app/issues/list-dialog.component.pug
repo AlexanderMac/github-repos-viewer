@@ -1,25 +1,24 @@
 div(*ngIf="issues")
   hr.dialog-header
-  .issue-list
-    p-table(
-      '[value]'="issues"
-      dataKey="id"
-      '[loading]'="isLoading"
-    )
-      ng-template(pTemplate="header")
-        tr
-          th Title
-          th Body
-          th Created
-      ng-template(pTemplate="body" let-issue="")
-        tr
-          td {{ issue.title }}
-          td.body
-            .overflow-scroll {{ issue.body }}
-          td {{ issue.created_at | date: 'hh:mm, dd MMMM YYYY' }}
-      ng-template(pTemplate="emptymessage")
-        tr
-          td(colspan="3") No issues
+  p-table(
+    '[value]'="issues"
+    dataKey="id"
+    '[loading]'="isLoading"
+  )
+    ng-template(pTemplate="header")
+      tr
+        th Title
+        th Body
+        th Created
+    ng-template(pTemplate="body" let-issue="")
+      tr
+        td {{ issue.title }}
+        td.body
+          .overflow-scroll {{ issue.body }}
+        td {{ issue.created_at | date: 'hh:mm, dd MMMM YYYY' }}
+    ng-template(pTemplate="emptymessage")
+      tr
+        td(colspan="3") No issues
 
   div.mt-3
     .float-end

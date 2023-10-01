@@ -1,12 +1,29 @@
-.repo-list
+div.mb-3
+  .row
+    .col-6.offset-3
+      .input-group
+        input.form-control(
+          name="orgName"
+          type="text"
+          placeholder="Organization Name"
+          '[(ngModel)]'="orgName"
+          '[disabled]'="false"
+        )
+        button.btn.btn-primary(
+          type="button"
+          title="Show"
+          '(click)'="showRepos()"
+        ) Show Repositories
+  hr
+
   p-table(
+    *ngIf="repos"
     '[value]'="repos"
     dataKey="id"
     selectionMode="single"
     sortField="name"
     '[loading]'="isLoading"
     '[(selection)]'="selectedRepo"
-    '(onRowSelect)'="onRepoSelect($event)"
   )
     ng-template(pTemplate="header")
       tr
@@ -22,21 +39,22 @@
         th(pSortableColumn="archived")
           span Archived?
           p-sortIcon(field="archived")
-        th Repo Url
+        th Repo Main page
+        th Repo Issues
     ng-template(pTemplate="body" let-repo="")
-      tr(
-        '[pSelectableRow]'="repo"
-        '(dblclick)'="onRepoDoubleClick($event)"
-      )
+      tr('[pSelectableRow]'="repo")
         td {{ repo.name }}
         td {{ repo.language }}
         td {{ repo.pushed_at | date: 'dd, MM, YYYY, HH:MM' }}
         td
           i.pi.pi-check(*ngIf="repo.archived")
         td
-          a(href="{{ repo.html_url }}" target="_blank") Repo Url
+          a(href="{{ repo.html_url }}" target="_blank") Main page
+        td
+          a(href="#" '(click)'="openRepoIssues($event); $event.preventDefault()") Issues
 
   p-paginator(
+    *ngIf="repos"
     '[rows]'="rowsPerPage"
     '[totalRecords]'="repoTotalCount"
     '[rowsPerPageOptions]'="[10, 50, 100]"

@@ -7,7 +7,6 @@ import { finalize } from 'rxjs/operators'
 import { IssueListDialogComponent } from '@app/issues/list-dialog.component'
 import { Repo } from '@app/repos/model'
 import { ListParams, RepoService } from '@app/repos/service'
-import { environment } from '@env/environment'
 
 @Component({
   selector: 'app-repo-list',
@@ -16,84 +15,85 @@ import { environment } from '@env/environment'
   providers: [DialogService, MessageService],
 })
 export class RepoListComponent implements OnInit, OnDestroy {
+  orgName = 'Google'
   repos!: Repo[]
   selectedRepo: Repo | null = null
-  prevSelectedRepo: Repo | null = null
   isLoading = false
   rowsPerPage = 10
   repoTotalCount = 0
   private _subscriptions = new Subscription()
 
-  constructor(private messageSrvc: MessageService, private dialogSrvc: DialogService, private repoSrvc: RepoService) {}
+  constructor(
+    private messageSrvc: MessageService,
+    private dialogSrvc: DialogService,
+    private repoSrvc: RepoService,
+  ) {}
 
   ngOnInit(): void {
-    this.loadTotalCount()
-    this.loadRepos()
+    this.showRepos()
   }
 
   ngOnDestroy(): void {
     this._subscriptions.unsubscribe()
   }
 
+  showRepos(): void {
+    this.loadTotalCount()
+    this.loadRepos()
+  }
+
   loadTotalCount() {
     this.isLoading = true
     const subscription = this.repoSrvc
-      .getRepoTotalCount(environment.orgName)
+      .getRepoTotalCount(this.orgName)
       .pipe(finalize(() => (this.isLoading = false)))
-      .subscribe(
-        repoTotalCount => (this.repoTotalCount = repoTotalCount),
-        (err: Error) =>
+      .subscribe({
+        next: repoTotalCount => (this.repoTotalCount = repoTotalCount),
+        error: (err: Error) =>
           this.messageSrvc.add({
             severity: 'error',
             summary: 'Unable to load repo total count',
             detail: err.message,
           }),
-      )
+      })
     this._subscriptions.add(subscription)
   }
 
   loadRepos(params?: ListParams): void {
     this.isLoading = true
     const subscription = this.repoSrvc
-      .getRepos(environment.orgName, params)
+      .getRepos(this.orgName, params)
       .pipe(finalize(() => (this.isLoading = false)))
-      .subscribe(
-        repos => {
-          this.repos = repos
-        },
-        (err: Error) =>
+      .subscribe({
+        next: repos => (this.repos = repos),
+        error: (err: Error) =>
           this.messageSrvc.add({
             severity: 'error',
             summary: 'Unable to load repos',
             detail: err.message,
           }),
-      )
+      })
     this._subscriptions.add(subscription)
   }
 
   // eslint-disable-next-line unused-imports/no-unused-vars
-  onRepoSelect(event: any): void {
-    this.prevSelectedRepo = this.selectedRepo
-  }
-
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  onRepoDoubleClick(event: any): void {
-    if (!this.prevSelectedRepo) {
+  openRepoIssues(event: any): void {
+    if (!this.selectedRepo) {
       return
     }
     const subscription = this.dialogSrvc
       .open(
         IssueListDialogComponent,
         IssueListDialogComponent.getDefaultConfig({
-          orgName: environment.orgName,
-          repoName: this.prevSelectedRepo.name,
+          orgName: this.orgName,
+          repoName: this.selectedRepo.name,
         }),
       )
-      .onClose.subscribe(
-        () => null,
-        (err: Error) =>
+      .onClose.subscribe({
+        next: () => null,
+        error: (err: Error) =>
           this.messageSrvc.add({ severity: 'error', summary: 'Unable to get the repo issues', detail: err.message }),
-      )
+      })
     this._subscriptions.add(subscription)
   }
 

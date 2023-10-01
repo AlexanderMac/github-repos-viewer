@@ -1,20 +1,20 @@
 # Github-Repos-Viewer
-A simple app to list Microsoft's repos on Github.
+A simple app to list organization's repos on Github.
 
-[![Build Status](https://github.com/AlexanderMac/github-repos-viewer/workflows/CI/badge.svg)](https://github.com/AlexanderMac/github-repos-viewer/actions?query=workflow%3ACI)
+[![Build Status](https://github.com/AlexanderMac/github-repos-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/AlexanderMac/github-repos-viewer/actions/workflows/ci.yml)
 
 [demo.webm](https://github.com/AlexanderMac/github-repos-viewer/assets/1192919/b9b3969d-0953-4fba-acbf-0bb8f98cb261)
 
 ### Features
-- A list of Microsoft repos
+- A list of organization's public repos on Github
 - Pagination
 - Sorting
 - A dialog with a list of top last 5 issues of the repo
 
 ### Set
-- **Framework**: Angular v15
-- **Language**: TypeScript v4
-- **UI Lib**: PrimeNg v15
+- **Framework**: Angular v16
+- **Language**: TypeScript v5
+- **UI Lib**: PrimeNg v16
 - **Build tool**: Webpack v5
 - **CSS preprocessor**: SASS
 - **CSS framework**: Bootstrap v5

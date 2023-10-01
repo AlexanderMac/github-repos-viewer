@@ -48,11 +48,11 @@ export class IssueListDialogComponent implements OnInit, OnDestroy {
     const subscription = this.issueSrvc
       .getTopRepoIssues(this.orgName, this.repoName)
       .pipe(finalize(() => (this.isLoading = false)))
-      .subscribe(
-        issues => (this.issues = issues),
-        (err: Error) =>
+      .subscribe({
+        next: issues => (this.issues = issues),
+        error: (err: Error) =>
           this.messageSrvc.add({ severity: 'error', summary: 'Unable to load issues', detail: err.message }),
-      )
+      })
     this._subscriptions.add(subscription)
   }
 
