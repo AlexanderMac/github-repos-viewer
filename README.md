@@ -3,8 +3,6 @@ A simple app to list organization's repos on Github.
 
 [![Build Status](https://github.com/AlexanderMac/github-repos-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/AlexanderMac/github-repos-viewer/actions/workflows/ci.yml)
 
-[demo.webm](https://github.com/AlexanderMac/github-repos-viewer/assets/1192919/b9b3969d-0953-4fba-acbf-0bb8f98cb261)
-
 ### Features
 - A list of organization's public repos on Github
 - Pagination
