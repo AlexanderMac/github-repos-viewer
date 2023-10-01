@@ -9,6 +9,5 @@ import { SharedModule } from '@shared/module'
   declarations: [IssueListDialogComponent],
   imports: [SharedModule],
   exports: [IssueListDialogComponent],
-  entryComponents: [IssueListDialogComponent],
 })
 export class IssuesModule {}
