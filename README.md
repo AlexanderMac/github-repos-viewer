@@ -1,7 +1,11 @@
-# Github-Repos-Viewer
-A simple app to list organization's repos on Github.
-
-[![Build Status](https://github.com/AlexanderMac/github-repos-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/AlexanderMac/github-repos-viewer/actions/workflows/ci.yml)
+<p align="center">
+  <h1 align="center">Github-Repos-Viewer</h1>
+  <p align="center">A simple app to list organization's repos on Github</p>
+  <p align="center">
+    <a href="https://github.com/alexandermac/github-repos-viewer/actions/workflows/ci.yml?query=branch%3Amaster"><img src="https://github.com/alexandermac/github-repos-viewer/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/alexandermac/github-repos-viewer.svg" alt="License"></a>
+  </p>
+</p>
 
 ![assets/screenshot.png](assets/screenshot.png)
 
