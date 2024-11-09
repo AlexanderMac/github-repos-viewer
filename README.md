@@ -1,21 +1,27 @@
-<p align="center">
-  <h1 align="center">Github-Repos-Viewer</h1>
-  <p align="center">A simple app to list organization's repos on Github</p>
-  <p align="center">
+<div align="center">
+  <h1>Github Repositories Viewer</h1>
+  <p>A simple app to list organization's repos on Github</p>
+  <p>
     <a href="https://github.com/alexandermac/github-repos-viewer/actions/workflows/ci.yml?query=branch%3Amaster"><img src="https://github.com/alexandermac/github-repos-viewer/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
     <a href="LICENSE"><img src="https://img.shields.io/github/license/alexandermac/github-repos-viewer.svg" alt="License"></a>
   </p>
-</p>
+</div>
 
 ![assets/screenshot.png](assets/screenshot.png)
 
-### Features
+# Contents
+- [Contents](#contents)
+- [Features](#features)
+- [Usage](#usage)
+- [License](#license)
+
+# Features
 - A list of organization's public repos on Github
 - Pagination
 - Sorting
 - A dialog with a list of top last 5 issues of the repo
 
-### Set
+## Stack
 - **Framework**: Angular v16
 - **Language**: TypeScript v5
 - **UI Lib**: PrimeNg v16
@@ -25,7 +31,7 @@
 - **Template engine**: Pug
 - **Linters, Formatters**: ESLint, Prettier
 
-### How to use
+# Usage
 ```sh
 # Clone this repo:
 git clone https://github.com/AlexanderMac/github-repos-viewer
@@ -43,7 +49,7 @@ pnpm i
 pnpm start
 ```
 
-### Commands
+## Other commands
 ```sh
 pnpm generate   # angular generator
 pnpm build      # build for dev
@@ -53,8 +59,8 @@ pnpm lint       # run linter and fix found issues
 pnpm format     # run prettier
 ```
 
-### License
-[MIT License](LICENSE)
+# License
+Licensed under the MIT license.
 
-### Author
+# Author
 Alexander Mac
